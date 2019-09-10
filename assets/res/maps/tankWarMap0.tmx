@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="26" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tankWar" tilewidth="16" tileheight="16">
+  <image source="landform.png" width="96" height="96"/>
+ </tileset>
+ <layer name="layer_0" width="26" height="26">
+  <data encoding="base64" compression="zlib">
+   eJztk9sKAjEMRPuiL7r1Vi///6VG2MEQMm26awXBgUNpNk1Chk3pr1/RNMPuS3PsN3afVuSM6tPq9ck+kV5r/al58w29emdhQ9im94weWeXh1CDnIhRhR9jPOYyi8nBqkIMZRgn1McMooT72V/OA+RB5Y/2pecB8iLzBCR2EozNrdmIsrmOoZ3UVbs6sxYmxuI6hHoQ5rFq7Z3h1tD9Wrd0zvDqeP2zXDOZpyx+2awbzlPmz1I/e/yeilueeeurrPifh3NHHqxHhLjw68qEnlecSgw==
+  </data>
+ </layer>
+ <objectgroup name="bullet"/>
+ <objectgroup name="tank"/>
+ <layer name="layer_1" width="26" height="26">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhDZhpgFmw2MNJA8xFpTAYjABXOFLbfFqHIy7zKfUfsfop9R+t3E8IDHT80BqQU4bQotzB5vfBWO4AALshAoM=
+  </data>
+ </layer>
+</map>
