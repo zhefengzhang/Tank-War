@@ -36,6 +36,6 @@ var GameConst = {
 	fastTankNum: 3,
 	normalTankNum: 2,
 	PlayerTankReviveTimes: 5,
-	EnemyTankAmount: 5
+	EnemyTankAmount: 20
 };
 module.exports = GameConst;

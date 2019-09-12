@@ -70,6 +70,9 @@ cc.Class({
         if (!CC_EDITOR) {
             this.initTankAutoActionManager();
         }
+    },
+
+    onEnable () {
         if (this.node.group === cc.game.groupList[2]) {
             this.node.getComponent(cc.Animation).play();
         }
