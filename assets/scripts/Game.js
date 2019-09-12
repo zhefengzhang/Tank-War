@@ -214,6 +214,7 @@ cc.Class({
                 this.tankWarMap.node.getChildByName("tank").children[i].getComponent("TankManager").isCanMove = false;
                 cc.director.getScheduler().pauseTarget(this.tankWarMap.node.getChildByName("tank").children[i].getComponent("TankManager"));
             }
+            this.gameMenu.getChildByName("Button Game Pause").getChildByName("Label Button").getComponent(cc.Label).string = "resume";
             console.log("[Game Pause]");
         }
         else {
@@ -222,6 +223,7 @@ cc.Class({
                 this.tankWarMap.node.getChildByName("tank").children[i].getComponent("TankManager").isCanMove = true;
                 cc.director.getScheduler().resumeTarget(this.tankWarMap.node.getChildByName("tank").children[i].getComponent("TankManager"));
             }
+            this.gameMenu.getChildByName("Button Game Pause").getChildByName("Label Button").getComponent(cc.Label).string = "pause";
             console.log("[Game Resume]");
         }
         
