@@ -93,8 +93,8 @@ cc.Class({
             if (!this.enemyTank) {
                 this.enemyTank = cc.instantiate(this.anyTank);
             }
-            this.enemyTank.getComponent("TankManager").initTank(GameConst.Dirction[0], cc.game.groupList[3], 
-                true, position, GameEnum.TankFlag.Enemy);
+            this.enemyTank.getComponent("TankManager").initTank(GameEnum.TankFlag.Enemy, GameConst.Dirction[0], cc.game.groupList[3], 
+                true, position);
             this.tankWarMap.node.getChildByName("tank").addChild(this.enemyTank);
         }
     },
@@ -105,7 +105,7 @@ cc.Class({
             if (!this.playerTank) {
                 this.playerTank = cc.instantiate(this.anyTank);
             }
-            this.playerTank.getComponent("TankManager").initTank(GameConst.Dirction[0], cc.game.groupList[2], 
+            this.playerTank.getComponent("TankManager").initTank(GameEnum.TankFlag.Player, GameConst.Dirction[0], cc.game.groupList[2], 
                 false, position);
             this.tankWarMap.node.getChildByName("tank").addChild(this.playerTank);
             return this.playerTank;

@@ -23,22 +23,17 @@ cc.Class({
 
     onCollisionEnter (other, self) {
         NodePoolManager.putNodeElemenet(this.node.group, this.node);
-        if (this.node.group === cc.game.groupList[1]) {
-        }
-        else if (this.node.group === cc.game.groupList[2]) {
+        if (this.node.group === cc.game.groupList[2]) {
             --cc.find("Canvas").getComponent("Game")._playerTankReviveTimes;
             cc.find("Canvas").getComponent("Game").updateGameMenuInfo(this.node, GameEnum.TankFlag.Player);
-            cc.find("Canvas").getComponent("Game").updateScore(this.node._score)
+            // cc.find("Canvas").getComponent("Game").updateScore(this.node.getComponent("TankManager")._score)
             cc.find("Canvas").getComponent("SoundManager").playEffectSound("playerTankBoom", false);
         }
         else if (this.node.group === cc.game.groupList[3]) {
             --cc.find("Canvas").getComponent("Game")._enemyTankAmount;
             cc.find("Canvas").getComponent("Game").updateGameMenuInfo(this.node, GameEnum.TankFlag.Enemy);
-            cc.find("Canvas").getComponent("Game").updateScore(this.node._score)
+            cc.find("Canvas").getComponent("Game").updateScore(this.node.getComponent("TankManager")._score)
             cc.find("Canvas").getComponent("SoundManager").playEffectSound("enemyTankBoom", false);
-        }
-        else if (this.node.group === cc.game.groupList[4]) {
-
         }
     },
 

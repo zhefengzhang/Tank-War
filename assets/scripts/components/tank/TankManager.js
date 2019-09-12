@@ -7,8 +7,8 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-var GameEnum = require("../gameData/GameEnum");
-var GameConst = require("../gameData/GameConst");
+var GameEnum = require("../../gameData/GameEnum");
+var GameConst = require("../../gameData/GameConst");
 var NodePoolManager = require("../NodePoolManager");
 cc.Class({
     extends: cc.Component,
@@ -78,16 +78,15 @@ cc.Class({
         }
     },
 
-    initTank(direction, group, auto, position, tankFlag) {
-        this.node._score = 0;
+    initTank(tankFlag, direction, group, auto, position) {
+        this.tankFlag = tankFlag;
         this.tankDirection = direction;
-        this.isAuto = auto;
         this.node.group = group;
-        this.node.setPosition(position);
-        if (tankFlag) {
-            this.tankFlag = tankFlag;
-        }
+        this.isAuto = auto;
         this._bornPosition = position;
+        this.node.setPosition(position);
+        
+        this.updateTankSpriteFrame(direction);
     },
 
     updateTank (type) {
@@ -97,8 +96,7 @@ cc.Class({
             newSpriteFrame = this.enemyTankSpriteFrames[spriteFrameIndex];
             for (let i = 0; i < GameConst.EnemyTankTypes.length; i++) {
                 if (newSpriteFrame.name.indexOf(GameConst.EnemyTankTypes[i].name) !== -1) {
-                    this.node._tankType = GameConst.EnemyTankTypes[i].name;
-                    this.node._score = GameConst.EnemyTankTypes[i].score;
+                    this._score = GameConst.EnemyTankTypes[i].score;
                     this.actionSpeed = GameConst.EnemyTankTypes[i].speed;
                 }
             }
@@ -109,13 +107,12 @@ cc.Class({
         this.node.getComponent(cc.Sprite).spriteFrame = newSpriteFrame;
     },
 
-    updateTankSpriteFrame (newDirection, type) {
+    updateTankSpriteFrame (newDirection) {
         var tankSprite = this.node.getComponent(cc.Sprite);
         var oldSpriteFrameName = tankSprite.spriteFrame.name;
         var newSpriteFrameName = null;
-        
         for (let i = 0; i < GameConst.DirctionRex.length; i++) {
-            
+        
             newSpriteFrameName = oldSpriteFrameName.replace(GameConst.DirctionRex[i], newDirection);
             
             if (newSpriteFrameName !== oldSpriteFrameName) {
@@ -170,4 +167,8 @@ cc.Class({
     onUnschedule () {
         this.unschedule(this.timerCallBack);
     },
+
+    onDisable () {
+        this.node.targetOff(this.node.getComponent("ColliderManager"));
+    }
 });
